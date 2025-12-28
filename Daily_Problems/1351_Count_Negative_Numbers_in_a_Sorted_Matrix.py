@@ -1,24 +1,34 @@
+"""
+Given a m x n matrix grid which is sorted in non-increasing order both row-wise and column-wise, return the number of negative numbers in grid.
+
+Constraints:
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 100
+-100 <= grid[i][j] <= 100"""
+
+
 from typing import List
 class Solution:
     def countNegatives_firstapproach(self, grid: List[List[int]]) -> int:
         R = len(grid)
         C = len(grid[0])
         # First Approach Iterating whole grid and counting negative number
-            # time complexity -> O(R * C)
-            # Space complexity -> O(1)
+            
         negative_count = 0
         for r in range(R):
             for c in range(C):
                 if grid[r][c] < 0:
                     negative_count += 1
         return negative_count
+        # time complexity -> O(R * C)
+        # Space complexity -> O(1)
 
     def countNegatives_secondapproach(self, grid: List[List[int]]) -> int:
         R = len(grid)
         C = len(grid[0])
-        # # Second Approach we oterate the every row and use binary search to find the first negative in that row and we can directly count the total number of negative numbers in that row
-        #     # time complexity -> O(R * log(C))
-        #     # Space complexity -> O(1)
+        # Second Approach we oterate the every row and use binary search to find the first negative in that row and we can directly count the total number of negative numbers in that row
+
         negative_count = 0
         for r in range(R):
             # Binary Search
@@ -34,18 +44,21 @@ class Solution:
                     left = mid + 1
             negative_count += (C - first_negative_index)
         return negative_count
+        # time complexity -> O(R * log(C))
+        # Space complexity -> O(1)
 
     def countNegatives_thirdapproach(self, grid: List[List[int]]) -> int:
         R = len(grid)
         C = len(grid[0])
-        # Third Approach this is an intuitive approach lets first amke some thing clear what we ar give
+        # Third Approach this is an intuitive approach lets first amke some thing clear what we are give:
             # - we are given that row is sorted in non-decreasing oreder which means if we find a early negative in that row we can directly say how many negative are there in that row
             # - with this we can start from bottom left corner, why bottom left again giving emphaziz on "find early negative number in the row to reduce the computation" so we can get early negative if we start from bottom left
             # - third we are also given that each row is ordered in non decreasing so we can say that if any positive in that coloumn we can surely say above that particualr positive elemnt in the coloumn every element will be positive
+        
+
 
         # seeting up ietrables at bottom left corner
-            # time complexity -> O(R + C)
-            # Space complexity -> O(1)
+            
         start_row = R-1
         start_col = 0 
         negative_count = 0 # total count for negative numbers
@@ -57,6 +70,8 @@ class Solution:
                 negative_count += (C - start_col)
                 start_row -= 1
         return negative_count
+        # time complexity -> O(R + C)
+        # Space complexity -> O(1)
 
 
 
