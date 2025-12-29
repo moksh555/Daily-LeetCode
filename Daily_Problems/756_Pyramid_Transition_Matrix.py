@@ -1,6 +1,7 @@
 
 from collections import defaultdict
 from functools import cache
+from typing import List
 
 
 class Solution:
