@@ -12,11 +12,14 @@ The number of nodes in the tree is in the range [2, 5 * 104].
 """
 
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+from typing import Optional
+
+
 class Solution:
     def __init__(self):
         self.MOD = 10 ** 9 + 7
@@ -59,3 +62,7 @@ class Solution:
         # now we will calculate the for each and every root and its chidlren
         maxProduct, totalSum = self.getMaxProduct(root, totalSum)
         return maxProduct % self.MOD
+
+# N -> number of nodes in 
+# time complexity -> O(N+N) one for traversing tree to calculate totalSum and other to traverse to get maximum Product
+# space complexity -> O(N) as for recursion stack
